@@ -2,7 +2,7 @@
 # Note: 
 #  - shared/common piece of code to 
 #  - This workflow can be called from other workflows.
-name: Common/Shared Code Checks modules
+name: Check GO code
 
 on:
   workflow_call:
