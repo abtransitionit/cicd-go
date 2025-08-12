@@ -17,5 +17,7 @@ jobs:
           go version
           # display folder
           pwd
+          # display content
+          ls -ial
           # do a static analysis of the code recursively from the current directory
           go vet ./...
