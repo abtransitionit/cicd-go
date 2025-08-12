@@ -1,0 +1,23 @@
+# description: check that the code and of a Go project
+# Note: 
+#  - shared/common piece of code to 
+#  - This workflow can be called from other workflows.
+name: Display info
+
+on:
+  workflow_call:
+
+jobs:
+  container-info:
+    runs-on: ubuntu-latest # denote a VM
+    container:              # denote a VM container
+      image: golang:1.24
+    steps:
+      - name: display host config
+        run: cat /proc/1/cgroup
+
+      - name: display os config
+        run: cat /etc/os-release
+
+      - name: display Go version
+        run: go version
