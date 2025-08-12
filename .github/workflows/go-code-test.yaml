@@ -11,7 +11,16 @@ jobs:
   test-code:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Run Go tests
         run: |
+          # display go version
+          go version
+          # display folder
+          pwd
+          # display content
+          ls -ial go.mod
           # find and run tests recursively from the current directory
           go test -v ./...
