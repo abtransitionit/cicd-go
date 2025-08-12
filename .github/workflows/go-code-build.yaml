@@ -2,7 +2,7 @@
 # Note: 
 #  - shared/common piece of code to 
 #  - This workflow can be called from other workflows.
-name: Install GO dependencies
+name: Check GO code
 
 on:
   workflow_call:
@@ -13,10 +13,10 @@ on:
         type: string
 
 jobs:
-  install-dependencies:
+  build-code:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Go toolchain
+      - name: Install specified Go version
         uses: actions/setup-go@v4
         with:
           go-version: ${{ inputs.go-version }}
@@ -24,7 +24,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Build the code
         run: |
           # display go version
           go version
@@ -32,5 +32,5 @@ jobs:
           pwd
           # display content
           ls -ial go.mod
-          # install dependencies
-          go mod tidy
+          # build
+          go build -v ./...
