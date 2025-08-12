@@ -16,7 +16,7 @@ jobs:
   build-code:
     runs-on: ubuntu-latest
     steps:
-      - name: Install specified Go version
+      - name: Install Go toolchain
         uses: actions/setup-go@v4
         with:
           go-version: ${{ inputs.go-version }}

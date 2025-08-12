@@ -16,13 +16,25 @@ jobs:
   check-code:
     runs-on: ubuntu-latest
     steps:
-      - name: Install specified Go version
+      - name: Install Go toolchain
         uses: actions/setup-go@v4
         with:
           go-version: ${{ inputs.go-version }}
 
       - name: Checkout code
         uses: actions/checkout@v3
+
+      # - name: Cache Go modules
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/go/pkg/mod
+      #     key: ${{ runner.os }}-go-${{ inputs.go-version }}-${{ hashFiles('go.sum') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-go-${{ inputs.go-version }}-
+
+      - name: Install dependencies
+        run: |
+          go mod tidy
 
       - name: Do the checks
         run: |
