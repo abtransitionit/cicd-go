@@ -13,5 +13,9 @@ jobs:
     steps:
       - name: Do the checks
         run: |
+          # display go version
+          go version
+          # display folder
+          pwd
           # do a static analysis of the code recursively from the current directory
           go vet ./...
