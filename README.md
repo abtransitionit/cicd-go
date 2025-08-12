@@ -1,7 +1,11 @@
-# gotplrepo
+# cicd-templates
 
-This repository serves as a standardized template for all future GitHub GO projects within the organization.  
+This repository contains a collection of reusable GitHub Actions workflow templates designed to standardize and simplify CI/CD pipelines across multiple repositories.
+By centralizing common build, test, and deployment steps, these workflows help ensure consistency, reduce duplication, and streamline maintenance for all projects that use them.
 
+
+[![Dev CI](https://github.com/abtransitionit/cicd-templates/actions/workflows/ci-dev.yaml/badge.svg?branch=dev)](https://github.com/abtransitionit/cicd-templates/actions/workflows/ci-dev.yaml)
+[![Main CI](https://github.com/abtransitionit/cicd-templates/actions/workflows/ci-main.yaml/badge.svg?branch=main)](https://github.com/abtransitionit/cicd-templates/actions/workflows/ci-main.yaml)
 [![LICENSE](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](https://choosealicense.com/licenses/apache-2.0/)
 
 ----
@@ -23,38 +27,30 @@ This project template includes the following components:
 
 # Getting Started  
 
-## 1. Create a repository from this template (e.g. `gomine`)
-- on `github.com` create `gomine` : an empty git repo without `README` and `.gitcore`
-- git clone the tpl repo: `gotplrepo` into `gomine`
-```shell
-git clone https://github.com/abtransitionit/gotplrepo.git gomine
-```
-- reset history and init repo
-```shell
-cd gomine
-rm -rf .git
-git init -b main  
-```
-- update `GO` path in the file `go.mod`
-```shell
-# do update
-go mod init github.com/abtransitionit/gomine
-# check updtae
-cat go.mod
-```
-- commit the code "initial setup from template"
-- update .git/config
-```shell
-git remote add origin https://github.com/abtransitionit/gomine.git
-```
-- push the code
-```shell
-git push -u origin main
-```
+## 1. Use it in other repos 
+```yaml
+name: CI for dev branch
 
-## 2. Update the README
-- update `gotplrepo` to `gomine`
-- review each sections and update/add content when needed
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  install-go:
+     uses: abtransitionit/cicd-templates/.github/workflows/install-go-toolchain.yaml@main
+     with:
+        go-version: '1.24'
+
+  checkout-code:
+    needs: install-go
+    uses: abtransitionit/cicd-templates/.github/workflows/ci_code-checkout.yaml@main
+
+  check-code:
+    needs: checkout-code
+    uses: abtransitionit/cicd-templates/.github/workflows/ci_code-check.yaml@main
+
+```
 
 
 ---
