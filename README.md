@@ -32,17 +32,17 @@ on:
 
 jobs:
   install-go:
-     uses: abtransitionit/cicd-go/.github/workflows/install-go-toolchain.yaml@main
+     uses: abtransitionit/cicd-go/.github/workflows/go-install.yaml@main
      with:
         go-version: '1.24'
 
   checkout-code:
     needs: install-go
-    uses: abtransitionit/cicd-go/.github/workflows/ci_code-checkout.yaml@main
+    uses: abtransitionit/cicd-go/.github/workflows/code-checkout.yaml@main
 
   check-code:
     needs: checkout-code
-    uses: abtransitionit/cicd-go/.github/workflows/ci_code-check.yaml@main
+    uses: abtransitionit/cicd-go/.github/workflows/code-check.yaml@main
 
 ```
 
