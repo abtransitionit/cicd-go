@@ -23,7 +23,7 @@ This project template includes the following components:
 
 ## 1. Use it in other repos 
 ```yaml
-name: CI for dev branch
+name: Dev branch CI
 
 on:
   push:
