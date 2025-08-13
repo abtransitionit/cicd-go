@@ -17,9 +17,15 @@ jobs:
     outputs:
       go-version: ${{ steps.extract.outputs.go_version }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Extract Go version
         id: extract
         run: |
           version=$(grep '^go ' go.mod | awk '{print $2}')
           echo "go_version=$version" >> $GITHUB_OUTPUT
+
+      - name: Display Go version
+        run: |
+          echo "Go version found in go.mod: ${{ steps.extract.outputs.go_version }}"
