@@ -1,0 +1,25 @@
+# description: Get the GO version as defined in the file go.mod
+# Note: 
+#  - shared/common code 
+#  - This workflow can be called from other workflows.
+name: Get Go version from go.mod
+
+on:
+  workflow_call:
+    outputs:
+      go-version:
+        description: "Go version extracted from go.mod"
+        value: ${{ jobs.get-go-version.outputs.go-version }}
+
+jobs:
+  get-go-version:
+    runs-on: ubuntu-latest
+    outputs:
+      go-version: ${{ steps.extract.outputs.go_version }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract Go version
+        id: extract
+        run: |
+          version=$(grep '^go ' go.mod | awk '{print $2}')
+          echo "go_version=$version" >> $GITHUB_OUTPUT
