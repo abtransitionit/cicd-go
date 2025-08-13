@@ -2,11 +2,6 @@
 
 This repository contains a collection of reusable GitHub Actions workflow templates designed to standardize and simplify CI/CD pipelines across multiple GO repositories. It centralize common build, test, and deployment steps. These workflows help ensure consistency, reduce duplication, and streamline maintenance for all projects that use them.
 
-
-[![Dev CI](https://github.com/abtransitionit/cicd-templates/actions/workflows/ci-dev.yaml/badge.svg?branch=dev)](https://github.com/abtransitionit/cicd-templates/actions/workflows/ci-dev.yaml)
-[![Main CI](https://github.com/abtransitionit/cicd-templates/actions/workflows/ci-main.yaml/badge.svg?branch=main)](https://github.com/abtransitionit/cicd-templates/actions/workflows/ci-main.yaml)
-[![LICENSE](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](https://choosealicense.com/licenses/apache-2.0/)
-
 ----
 
 
