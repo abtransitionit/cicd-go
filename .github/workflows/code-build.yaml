@@ -1,4 +1,4 @@
-# description: check that the code and of a Go project
+# description: build a GO CLI. Not necessary for a library
 # Note: 
 #  - shared/common piece of code to 
 #  - This workflow can be called from other workflows.

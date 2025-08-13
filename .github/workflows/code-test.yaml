@@ -1,4 +1,4 @@
-# description: check that the code and of a Go project
+# description: play all existing tests in a Go project
 # Note: 
 #  - shared/common code 
 #  - This workflow can be called from other workflows.
