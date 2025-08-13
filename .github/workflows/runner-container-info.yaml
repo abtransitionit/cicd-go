@@ -1,6 +1,6 @@
 # description: check that the code and of a Go project
 # Note: 
-#  - shared/common piece of code to 
+#  - shared/common code 
 #  - This workflow can be called from other workflows.
 name: Display info
 
