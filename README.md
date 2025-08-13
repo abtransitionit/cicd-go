@@ -1,7 +1,6 @@
-# cicd-templates
+# cicd-go
 
-This repository contains a collection of reusable GitHub Actions workflow templates designed to standardize and simplify CI/CD pipelines across multiple repositories.
-By centralizing common build, test, and deployment steps, these workflows help ensure consistency, reduce duplication, and streamline maintenance for all projects that use them.
+This repository contains a collection of reusable GitHub Actions workflow templates designed to standardize and simplify CI/CD pipelines across multiple GO repositories. It centralize common build, test, and deployment steps. These workflows help ensure consistency, reduce duplication, and streamline maintenance for all projects that use them.
 
 
 [![Dev CI](https://github.com/abtransitionit/cicd-templates/actions/workflows/ci-dev.yaml/badge.svg?branch=dev)](https://github.com/abtransitionit/cicd-templates/actions/workflows/ci-dev.yaml)
