@@ -16,6 +16,7 @@ jobs:
   install-dependencies:
     runs-on: ubuntu-latest
     steps:
+
       - name: Install Go toolchain
         uses: actions/setup-go@v4
         with:

@@ -11,11 +11,16 @@ jobs:
   tag-code:
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Important! To fetch all tags
                           # fetch full git history - mandatory when using some git commands like `git tag`
+
+      - name: clean-gomod
+        uses: ./.github/workflows/gomod-clean.yml@main
+
 
       - name: Get current version from VERSION file
         id: get_current_version

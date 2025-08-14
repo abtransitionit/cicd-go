@@ -1,0 +1,28 @@
+# description: remove replace line in the file go.mod that points to a local module (for dev mode)
+# Note: 
+#  - shared/common code 
+#  - This workflow can be called from other workflows.
+# description: remove replace line in the file go.mod that points to a local module (for dev mode)
+# Note: 
+#  - shared/common code 
+#  - This workflow can be called from other workflows.
+name: Prepare Go.mod for Production
+
+on:
+  workflow_call:
+
+jobs:
+  clean-gomod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Remove local replace lines (in-place)
+        run: |
+          GO_MOD="go.mod"
+          sed -i '/replace .*=> \.\.\//d' "$GO_MOD"
+          echo "Cleaned $GO_MOD for production"
+
+      - name: Display cleaned go.mod
+        run: cat go.mod
