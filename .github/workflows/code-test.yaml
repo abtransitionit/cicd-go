@@ -24,7 +24,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Do the checks
+      - name: run the tests
         run: |
           # display go version
           go version
@@ -32,5 +32,7 @@ jobs:
           pwd
           # display content
           ls -ial go.mod
-          # find and run tests recursively from the current directory
+          # cat go.mod
+          cat go.mod
+          # find and run all tests recursively from the current directory
           go test -v ./...

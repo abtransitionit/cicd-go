@@ -33,5 +33,7 @@ jobs:
           pwd
           # display content
           ls -ial go.mod
+          # cat go.mod
+          cat go.mod
           # install dependencies
           go mod tidy
