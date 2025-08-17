@@ -10,6 +10,10 @@ on:
 jobs:
   tag-code:
     runs-on: ubuntu-latest
+
+    env:
+      GO_MOD: go.mod
+
     steps:
 
       - name: Checkout code
@@ -19,7 +23,6 @@ jobs:
 
       - name: Remove local replace lines (in-place)
         run: |
-          GO_MOD="go.mod"
           sed -i '/replace .*=> \.\.\//d' "$GO_MOD"
           echo "Cleaned $GO_MOD for production"
 
