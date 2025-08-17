@@ -67,3 +67,19 @@ Track version updates and changes:
 
 ---
 
+
+
+# Todo: CI Improvements
+
+## 1. Dependency Caching
+
+* **Current behavior:** The workflow downloads Go modules on every run.
+* **Issue:** Re-downloading dependencies for each workflow execution is inefficient.
+* **Proposed improvement:** Cache Go module dependencies to significantly speed up subsequent runs.
+
+## 2. Job Permissions
+
+* **Current behavior:** Jobs run using the default `GITHUB_TOKEN`.
+* **Issue:** The default token grants more permissions than necessary, potentially creating security risks.
+* **Proposed improvement:** Explicitly configure job permissions to limit access to only what is required, for example when creating tags.
+

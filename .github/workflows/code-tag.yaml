@@ -15,12 +15,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Important! To fetch all tags
-                          # fetch full git history - mandatory when using some git commands like `git tag`
+          fetch-depth: 0  # Important! To fetch all tags - fetch full git history - mandatory when using some git commands like `git tag`
 
-      - name: clean-gomod
-        uses: ./.github/workflows/gomod-clean.yml@main
+      - name: Remove local replace lines (in-place)
+        run: |
+          GO_MOD="go.mod"
+          sed -i '/replace .*=> \.\.\//d' "$GO_MOD"
+          echo "Cleaned $GO_MOD for production"
 
+      - name: Commit changes to go.mod # This step is mandatory because the TAG will be created from the last commit (this one) 
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$GO_MOD"
+          git commit -m "chore: Remove local replace directives from go.mod"
+
+
+      - name: Display cleaned go.mod
+        run: cat go.mod
 
       - name: Get current version from VERSION file
         id: get_current_version
@@ -58,7 +70,5 @@ jobs:
         env:
           TAG: v${{ steps.get_current_version.outputs.version }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           git tag -a $TAG -m "Release $TAG"
           git push origin $TAG
