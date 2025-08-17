@@ -1,4 +1,4 @@
-# description: remove replace line in the file go.mod that points to a local module (for dev mode)
+# description: remove replace line in the file go.mod that was merged from dev branch.
 # Note: 
 #  - shared/common code 
 #  - This workflow can be called from other workflows.

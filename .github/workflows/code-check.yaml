@@ -45,5 +45,7 @@ jobs:
           pwd
           # display content
           ls -ial go.mod
+          # cat go.mod
+          cat go.mod
           # do a static analysis of the code recursively from the current directory
           go vet ./...
