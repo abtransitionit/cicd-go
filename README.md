@@ -1,13 +1,12 @@
-# cicd-go
-
-This repository contains a collection of reusable GitHub Actions workflow templates designed to standardize and simplify CI/CD pipelines across multiple GO repositories. It centralize common build, test, and deployment steps. These workflows help ensure consistency, reduce duplication, and streamline maintenance for all projects that use them.
+# Repository Overview
+This repository hosts a **library** of **reusable** code
+  - for **GitHub Actions** workflow templates.
+  - allowing to reduces duplication of **logic** in **ci/cd** pipeline.
 
 ----
 
 
-# Features  
-This project template includes the following components:  
-
+# Legal
 
 |Component|Description|
 |-|-|
